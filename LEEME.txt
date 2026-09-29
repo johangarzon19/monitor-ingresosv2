@@ -1,0 +1,30 @@
+MONITOR DE INGRESOS - como ejecutarlo en tu PC
+==============================================
+
+1) Estructura de carpetas (no la cambies):
+
+   monitor-ingresos\
+     index.html
+     css\styles.css
+     js\app.js
+     data\reporte_ingresos.xlsx   <- aqui va tu Excel
+
+2) Copia tu archivo reporte_ingresos.xlsx dentro de la carpeta data.
+
+3) Arranca el servidor. La forma mas facil: doble clic en servidor.bat
+   (o ejecutalo desde esta consola con:  servidor.bat )
+
+   Tambien sirve cualquiera de estos comandos, estando dentro de la
+   carpeta monitor-ingresos:
+
+   py -m http.server 8080
+   python -m http.server 8080
+   npx --yes serve -l 8080 .
+   npx --yes http-server -p 8080 -c-1 .
+
+4) Abre el navegador en:  http://localhost:8080
+
+5) Para detener el servidor pulsa:  Ctrl + C   (y Enter si hace falta)
+
+Nota: no abras index.html con doble clic (file://), porque el navegador
+bloquea la lectura del Excel. Siempre usa el servidor local.

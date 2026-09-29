@@ -1,0 +1,766 @@
+/* ============================================================
+   MONITOR DE INGRESOS - ESTILOS
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Espaciado lateral que crece con el ancho de la pantalla */
+    --margen-lateral: clamp(12px, 2.5vw, 40px);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+
+/* ============================================================
+   ENCABEZADO
+   ============================================================ */
+
+header {
+    background: #1f2937;
+    color: white;
+    padding: 20px var(--margen-lateral);
+}
+
+header h1 {
+    margin: 0 0 8px;
+    font-size: clamp(20px, 2.5vw, 28px);
+}
+
+header p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.encabezado-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+
+/* ============================================================
+   CONTENIDO PRINCIPAL (aprovecha todo el ancho)
+   ============================================================ */
+
+main {
+    width: 100%;
+    max-width: none;
+    margin: 24px 0;
+    padding: 0 var(--margen-lateral);
+}
+
+.carga,
+.resultado {
+    background: white;
+    padding: clamp(14px, 2vw, 25px);
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.resultado {
+    margin-top: 20px;
+}
+
+
+/* ============================================================
+   TARJETAS KPI
+   ============================================================ */
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.indicadores .card {
+    position: relative;
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    border-left: 5px solid #2563eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.indicadores .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.indicadores .card span {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.indicadores .card strong {
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 700;
+    color: #111827;
+}
+
+.indicadores .card:nth-child(1) { border-left-color: #2563eb; }
+.indicadores .card:nth-child(2) { border-left-color: #16a34a; }
+.indicadores .card:nth-child(3) { border-left-color: #dc2626; }
+.indicadores .card:nth-child(4) { border-left-color: #f59e0b; }
+
+
+/* ============================================================
+   FILTROS
+   ============================================================ */
+
+.filtros {
+    margin-top: 20px;
+    padding: clamp(14px, 2vw, 20px);
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.filtros h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Se acomoda solo: tantas columnas como quepan en la pantalla */
+.filtros-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
+    align-items: end;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.filtro label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.filtro > input,
+.filtro > select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #ffffff;
+    color: inherit;
+}
+
+.filtro > input:focus,
+.filtro > select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.filtro > button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #374151;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.filtro > button:hover {
+    background: #1f2937;
+}
+
+
+/* ============================================================
+   SELECCIÓN MÚLTIPLE (PDV y Funcionario)
+   ============================================================ */
+
+.multiselect {
+    position: relative;
+    width: 100%;
+}
+
+.ms-boton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.ms-boton:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.ms-texto {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ms-flecha {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.ms-panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 50;
+
+    width: 100%;
+    min-width: 240px;
+
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ms-panel[hidden] {
+    display: none;
+}
+
+.ms-buscar {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #ffffff;
+    color: #1f2937;
+}
+
+.ms-buscar:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.ms-acciones {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.ms-acciones button {
+    padding: 4px 0;
+    border: none;
+    background: none;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ms-acciones button:hover {
+    text-decoration: underline;
+}
+
+.ms-lista {
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.ms-opcion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.ms-opcion:hover {
+    background: #f3f4f6;
+}
+
+.ms-opcion input {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.ms-opcion span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.ms-vacio {
+    padding: 10px 4px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   ENCABEZADO DE RESULTADOS Y BOTÓN EXCEL
+   ============================================================ */
+
+.resultado-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.resultado-encabezado h2 {
+    margin: 0;
+}
+
+.btn-exportar-excel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 18px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #107c41;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn-exportar-excel:hover {
+    background: #0b5c30;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.icono-excel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    background: #ffffff;
+    color: #107c41;
+
+    border-radius: 3px;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   TABLAS
+   ============================================================ */
+
+.tabla-contenedor,
+.tabla-alertas-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+#resultado {
+    overflow-x: auto;
+}
+
+/* En pantallas pequeñas la tabla se desplaza horizontalmente */
+#resultado table {
+    width: 100%;
+    min-width: 900px;
+}
+
+th {
+    background: #1f2937;
+    color: white;
+    padding: 9px 10px;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+td {
+    padding: 9px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+tr:hover {
+    background: #f9fafb;
+}
+
+.btn-fotos {
+    padding: 5px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-fotos:hover {
+    background: #f3f4f6;
+}
+
+
+/* ============================================================
+   ESTADOS
+   ============================================================ */
+
+.estado {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.temprano  { background: #dcfce7; color: #166534; }
+.a-tiempo  { background: #dbeafe; color: #1e40af; }
+.tarde     { background: #fee2e2; color: #991b1b; }
+.pendiente { background: #fef3c7; color: #92400e; }
+
+
+/* ============================================================
+   ALERTAS DE RECURRENCIA
+   ============================================================ */
+
+.alertas-recorrencia {
+    margin-top: 20px;
+    padding: clamp(14px, 2vw, 20px);
+
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.alertas-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.alertas-encabezado h2 {
+    margin: 0 0 5px 0;
+    color: #111827;
+    font-size: 20px;
+}
+
+.alertas-encabezado p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+#alertasRecurrencia {
+    padding: 18px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    color: #9a3412;
+    font-size: 14px;
+    overflow-x: auto;
+}
+
+#alertasRecurrencia table {
+    min-width: 700px;
+    width: 100%;
+}
+
+.alerta-resumen {
+    margin-bottom: 10px;
+}
+
+.sin-alertas {
+    color: #166534;
+    font-weight: 600;
+}
+
+.cantidad-tardanzas {
+    color: #991b1b;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   SWITCH DE TEMA
+   ============================================================ */
+
+.switch-tema {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.switch-tema input {
+    display: none;
+}
+
+.slider-tema {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    background: #d1d5db;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.slider-tema::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.switch-tema input:checked + .slider-tema {
+    background: #2563eb;
+}
+
+.switch-tema input:checked + .slider-tema::before {
+    transform: translateX(22px);
+}
+
+.texto-tema {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+
+/* ============================================================
+   TEMA OSCURO
+   ============================================================ */
+
+body.tema-oscuro {
+    background: #111827;
+    color: #f9fafb;
+}
+
+body.tema-oscuro .carga,
+body.tema-oscuro .card,
+body.tema-oscuro .filtros,
+body.tema-oscuro .resultado,
+body.tema-oscuro .alertas-recorrencia {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+body.tema-oscuro h1,
+body.tema-oscuro h2,
+body.tema-oscuro h3,
+body.tema-oscuro .alertas-encabezado h2 {
+    color: #f9fafb;
+}
+
+body.tema-oscuro p,
+body.tema-oscuro label,
+body.tema-oscuro .filtro label {
+    color: #d1d5db;
+}
+
+body.tema-oscuro .indicadores .card span {
+    color: #d1d5db;
+}
+
+body.tema-oscuro .indicadores .card strong {
+    color: #ffffff;
+}
+
+body.tema-oscuro .filtro > input,
+body.tema-oscuro .filtro > select {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+body.tema-oscuro .texto-tema {
+    color: #ffffff;
+}
+
+body.tema-oscuro table {
+    background: #1f2937;
+}
+
+body.tema-oscuro table td {
+    color: #f9fafb;
+    border-bottom-color: #374151;
+}
+
+body.tema-oscuro tr:hover {
+    background: #273244;
+}
+
+/* Selección múltiple en modo oscuro */
+body.tema-oscuro .ms-boton,
+body.tema-oscuro .ms-buscar {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+body.tema-oscuro .ms-panel {
+    background: #1f2937;
+    border-color: #4b5563;
+}
+
+body.tema-oscuro .ms-opcion {
+    color: #f9fafb;
+}
+
+body.tema-oscuro .ms-opcion:hover {
+    background: #374151;
+}
+
+body.tema-oscuro .ms-acciones button {
+    color: #93c5fd;
+}
+
+body.tema-oscuro .btn-fotos {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #4b5563;
+}
+
+body.tema-oscuro .btn-fotos:hover {
+    background: #374151;
+}
+
+body.tema-oscuro #alertasRecurrencia {
+    background: #2b2117;
+    border-color: #7c4a1d;
+    color: #fdba74;
+}
+
+body.tema-oscuro .sin-alertas {
+    color: #86efac;
+}
+
+body.tema-oscuro .cantidad-tardanzas {
+    color: #fca5a5;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+
+    .indicadores {
+        gap: 14px;
+    }
+
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+
+    .indicadores {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .indicadores .card {
+        padding: 16px;
+    }
+
+    .filtros-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-exportar-excel {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .ms-panel {
+        min-width: 0;
+    }
+
+    .alertas-encabezado h2 {
+        font-size: 18px;
+    }
+
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 380px) {
+
+    .indicadores {
+        grid-template-columns: 1fr;
+    }
+
+}

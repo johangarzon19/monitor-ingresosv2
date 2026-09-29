@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Monitor de Ingresos</title>
+
+        <link rel="stylesheet" href="css/styles.css?v=4">
+    </head>
+
+    <body>
+
+        <header>
+            <div class="encabezado-contenido">
+
+                <div>
+                    <h1>Monitor de Ingresos</h1>
+                    <p>Control de ingresos vs programación</p>
+                </div>
+
+                <label class="switch-tema">
+                    <input
+                        type="checkbox"
+                        id="btnTema"
+                    >
+                    <span class="slider-tema"></span>
+                    <span class="texto-tema">Tema</span>
+                </label>
+
+            </div>
+        </header>
+
+        <main>
+
+            <section class="indicadores">
+
+                <div class="card">
+                    <span>Programados</span>
+                    <strong id="totalProgramados">0</strong>
+                </div>
+
+                <div class="card">
+                    <span>Ingresos</span>
+                    <strong id="totalIngresos">0</strong>
+                </div>
+
+                <div class="card">
+                    <span>Tarde</span>
+                    <strong id="totalTarde">0</strong>
+                </div>
+
+                <div class="card">
+                    <span>Pendientes</span>
+                    <strong id="totalPendientes">0</strong>
+                </div>
+
+            </section>
+
+            <section class="filtros">
+
+                <h2>Filtros</h2>
+
+                <div class="filtros-contenedor">
+
+                    <div class="filtro">
+                        <label for="filtroFechaInicio">Fecha inicio</label>
+                        <input type="date" id="filtroFechaInicio">
+                    </div>
+
+                    <div class="filtro">
+                        <label for="filtroFechaFin">Fecha fin</label>
+                        <input type="date" id="filtroFechaFin">
+                    </div>
+
+
+                    <div class="filtro">
+                        <label id="lblFiltroPDV">PDV</label>
+                        <div id="filtroPDV" aria-labelledby="lblFiltroPDV"></div>
+                    </div>
+
+
+                    <div class="filtro">
+                        <label for="filtroEstado">Estado</label>
+
+                        <select id="filtroEstado">
+
+                            <option value="">
+                                Todos
+                            </option>
+
+                            <option value="TEMPRANO">
+                                🟢 Temprano
+                            </option>
+
+                            <option value="A TIEMPO">
+                                🔵 A tiempo
+                            </option>
+
+                            <option value="TARDE">
+                                🔴 Tarde
+                            </option>
+
+                            <option value="AÚN NO MARCA">
+                                🟡 Aún no marca
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="filtro">
+                        <label id="lblFiltroFuncionario">Funcionario</label>
+                        <div id="filtroFuncionario" aria-labelledby="lblFiltroFuncionario"></div>
+                    </div>
+
+
+                    <div class="filtro">
+
+                        <button
+                            type="button"
+                            id="btnLimpiarFiltros"
+                        >
+                            Limpiar filtros
+                        </button>
+
+                    </div>
+
+                </div>
+            
+                
+
+            </section>
+
+            <section class="alertas-recorrencia">
+
+                <div class="alertas-encabezado">
+
+                    <div>
+                        <h2>⚠️ Alertas de recurrencia</h2>
+
+                        <p>
+                            Funcionarios con múltiples llegadas tarde
+                            durante el período seleccionado.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div id="alertasRecurrencia">
+                    Selecciona un período para analizar la recurrencia.
+                </div>
+
+            </section>
+
+            
+            <section class="resultado">
+
+                <div class="resultado-encabezado">
+
+                    <h2>Estado de carga</h2>
+
+                    <button
+                        type="button"
+                        id="btnExportarExcel"
+                        class="btn-exportar-excel"
+                    >
+                        <span class="icono-excel">X</span>
+                        Exportar a Excel
+                    </button>
+
+                </div>
+
+                <div id="resultado">
+                    Esperando archivo...
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- Librería para leer Excel -->
+        <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+        <!-- Nuestra aplicación -->
+        <script src="js/app.js?v=4"></script>
+
+    </body>
+</html>
